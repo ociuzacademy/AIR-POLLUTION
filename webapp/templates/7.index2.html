@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AirAware</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="background-overlay">
+        <img src="../static/img.webp" alt="Air Quality Background">
+    </div>
+
+    <div id="content">
+        <h1>AirAware</h1>
+        <h3>Web app developed in HTML and CSS with ML models at the backend for air pollution forecasting</h3>
+        <form id="prediction-form" method="post" action="/predict2">
+            <label for="city">Select City:</label><br>
+            <select id="city" name="city">
+                {% for city in cities %}
+                    <option value="{{ city }}">{{ city }}</option>
+                {% endfor %}
+            </select><br><br>
+            
+            <label for="date">Select Date:</label><br>
+            <input type="date" id="date" name="date" min="2015-01-01" max="2028-12-31"><br><br>
+
+            <!-- Input fields for 9 pollutants -->
+            <label for="pollutants">Enter Pollutant Levels:</label><br><br>
+
+            <label for="pm25">PM2.5:</label>
+            <input type="number" step="0.01" id="pm25" name="PM2.5"><br><br>
+
+            <label for="pm10">PM10:</label>
+            <input type="number" step="0.01" id="pm10" name="PM10"><br><br>
+
+            <label for="no">NO:</label>
+            <input type="number" step="0.01" id="no" name="NO"><br><br>
+
+            <label for="no2">NO2:</label>
+            <input type="number" step="0.01" id="no2" name="NO2"><br><br>
+
+            <label for="nox">NOx:</label>
+            <input type="number" step="0.01" id="nox" name="NOx"><br><br>
+
+            <label for="nh3">NH3:</label>
+            <input type="number" step="0.01" id="nh3" name="NH3"><br><br>
+
+            <label for="co">CO:</label>
+            <input type="number" step="0.01" id="co" name="CO"><br><br>
+
+            <label for="so2">SO2:</label>
+            <input type="number" step="0.01" id="so2" name="SO2"><br><br>
+
+            <label for="o3">O3:</label>
+            <input type="number" step="0.01" id="o3" name="O3"><br><br>
+
+            <label for="model">Select Model:</label><br>
+            <select id="model" name="model">
+                <option value="linear">Linear Regression</option>
+                <option value="XGBoost">XGBoost</option>
+            </select><br><br>
+
+            <input type="submit" value="Predict2"><br><br>
+        </form>
+
+       
+
+        <div id="prediction-result"></div>
+    </div>
+
+    <script src="static/js/main.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#city').change(function() {
+                var selectedCity = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: '/get_dates',
+                    contentType: 'application/json',
+                    data: JSON.stringify({city: selectedCity}), // Send city as JSON data
+                    success: function(response) {
+                        var dates = response;
+                        var minDate = dates[0];
+                        var maxDate = dates[dates.length - 1];
+                        $('#date').attr('min', minDate);
+                        $('#date').attr('max', maxDate);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body {
+            background-color: #37517e;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: lightblue;
+    color:#37517e ;
+    border: 2px solid lightblue;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 200px; /* Increase the width here */
+}
+        button:hover {
+            background-color: #87CEEB;
+        }
+    </style>
+</head>
+<body>
+<p>Our web app provides efficient air quality monitoring, helps you cope up with the air around you. </p>
+<p>It delivers timely alerts, personalized notifications, and practical suggestions to help you reduce exposure to harmful pollutants. </p>
+<p>With data-driven insights, you can take immediate precautions to protect your health. </p>
+<p>The app also empowers you to track air quality trends and make informed decisions about outdoor activities. Our goal is to create a safer, healthier environment for everyone, one breath at a time.</p>
+    <h1>Team Members</h1>
+    <ul>
+        <li>1. Name1</li>
+        <li>2. Name2</li>
+        <li>3. Name3</li>
+        <li>4. Name4</li>
+    </ul>
+
+<button onclick="window.location.href='{{ url_for('home2') }}'">Home</button>
+
+
+</body>
+</html>
+

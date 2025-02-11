@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precautions and Suggestions</title>
+    <style>
+        body {
+            background-color: #37517e;
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            padding: 30px;
+            background-color: #2c3e50;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        .content {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            font-size: 28px;
+            text-align: center;
+        }
+        ul {
+            font-size: 18px;
+            line-height: 1.8;
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            margin: 5px 0;
+        }
+        .home-button {
+            display: block;
+            width: 200px;
+            margin: 40px auto;
+            padding: 10px;
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+        .home-button:hover {
+            background-color: #37517e;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AirAware - Precautions and Suggestions</h1>
+    </header>
+
+    <div class="content">
+        <h2>Air Pollution Precautions</h2>
+        <ul>
+            <li>Stay indoors during high pollution hours, especially during early morning and late evening.</li>
+            <li>Wear a mask (N95 or higher) to filter out harmful particles when going outside.</li>
+            <li>Limit physical activities outdoors to reduce exposure to harmful pollutants.</li>
+            <li>Keep windows and doors closed during high pollution days to prevent indoor contamination.</li>
+            <li>Use air purifiers at home to maintain clean air quality indoors.</li>
+        </ul>
+
+        <h2>Suggestions for Reducing Air Pollution</h2>
+        <ul>
+            <li>Plant trees and other greenery to improve air quality around you.</li>
+            <li>Use public transport, carpool, or bike instead of driving alone to reduce emissions.</li>
+            <li>Switch to electric or hybrid vehicles to lower carbon emissions.</li>
+            <li>Conserve energy by using energy-efficient appliances and turning off lights when not in use.</li>
+            <li>Support policies that aim to reduce industrial pollution and promote cleaner alternatives.</li>
+        </ul>
+    </div>
+
+    <a href="{{ url_for('home2') }}" class="home-button">Home</a>
+
+</body>
+</html>
+

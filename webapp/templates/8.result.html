@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirAware</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="background-overlay">
+        <img src="../static/img.webp" alt="Air Quality Background">
+    </div>
+    <div id="content">
+        <h1>Air Quality Classification Result</h1>
+        <h2>Air Quality Index (AQI) for {{ city }} on {{ date }}</h2>
+
+        <table>
+            <tr>
+                <th>Pollutant</th>
+                <th>Concentration (µg/m³)</th>
+            </tr>
+            {% for pollutant, concentration in pollutant_concentrations.items() %}
+            <tr>
+                <td>{{ pollutant }}</td>
+                <td>{{ concentration }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <!-- Add a canvas for the bar plot -->
+        <h2>Pollutant Concentrations</h2>
+        <canvas id="pollutantChart" width="400" height="200"></canvas>
+
+        <h2 class="aqi-status {% if AQI <= 50 %}green
+                    {% elif AQI <= 100 %}yellow
+                    {% elif AQI <= 200 %}orange
+                    {% elif AQI <= 300 %}red
+                    {% else %}red
+                    {% endif %}">Final AQI predicted: {{ AQI }} [{{ category }}]</h2>
+
+        <h2>EFFECT ON HEALTH :</h2>
+        <table>
+            <tr>
+                <th>High Concentration Pollutant</th>
+                <th>Health Implication</th>
+            </tr>
+            {% for pollutant, implication in health_implications.items() %}
+            {% if implication != "" %}
+            <tr>
+                <td>{{ pollutant }}</td>
+                <td>{{ implication }}</td>
+            </tr>   
+            {% endif %}
+            {% endfor %}
+        </table>
+
+        <!-- Table with AQI remarks -->
+        <table id="aqi-remarks">
+            <tr>
+                <th>AQI</th>
+                <th>Remark</th>
+                <th>Possible Health Impacts</th>
+            </tr>
+            <tr>
+                <td>0-50</td>
+                <td>Good</td>
+                <td>Minimal Impact</td>
+            </tr>
+            <tr>
+                <td>51-100</td>
+                <td>Satisfactory</td>
+                <td>Minor breathing discomfort to sensitive people</td>
+            </tr>
+            <tr>
+                <td>101-200</td>
+                <td>Moderate</td>
+                <td>Breathing discomfort to the people with lung, heart disease, children and older adults</td>
+            </tr>
+            <tr>
+                <td>201-300</td>
+                <td>Poor</td>
+                <td>Breathing discomfort to people on prolonged exposure</td>
+            </tr>
+            <tr>
+                <td>301-400</td>
+                <td>Very Poor</td>
+                <td>Respiratory illness to the people on prolonged exposure</td>
+            </tr>
+            <tr>
+                <td>&gt;400</td>
+                <td>Severe</td>
+                <td>Respiratory effects even on healthy people</td>
+            </tr>
+        </table>
+
+        <h2>GLOBAL WARMING ALERT :</h2>
+        <h2 class="aqi-status">Amount of CO, NOx, and O3 are {{level}}: {{ cause }}</h2>
+    </div>
+
+
+
+<audio id="alert-sound" src="static/alert.mp3" preload="auto"></audio>
+
+    <script>
+        // Get pollutant data from backend
+        const pollutantData = {{ pollutant_concentrations|tojson }};
+        const pollutants = Object.keys(pollutantData);
+        const concentrations = Object.values(pollutantData);
+
+        // Create the bar plot using Chart.js
+        const ctx = document.getElementById('pollutantChart').getContext('2d');
+        new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: pollutants,
+        datasets: [{
+            label: 'Concentration (µg/m³)',
+            data: concentrations,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)', // Light red
+                'rgba(54, 162, 235, 0.2)', // Light blue
+                'rgba(255, 206, 86, 0.2)', // Light yellow
+                'rgba(75, 192, 192, 0.2)', // Light green
+                'rgba(153, 102, 255, 0.2)' // Light purple
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)', // Red
+                'rgba(54, 162, 235, 1)', // Blue
+                'rgba(255, 206, 86, 1)', // Yellow
+                'rgba(75, 192, 192, 1)', // Green
+                'rgba(153, 102, 255, 1)' // Purple
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                labels: {
+                    color: 'black' // Set legend text color to black
+                }
+            }
+        },
+        layout: {
+            padding: 20 // Add padding around the chart
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: 'black' // X-axis text color
+                }
+            },
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    color: 'black' // Y-axis text color
+                }
+            }
+        }
+    },
+    plugins: [{
+        beforeDraw: (chart) => {
+            const ctx = chart.canvas.getContext('2d');
+            ctx.save();
+            ctx.fillStyle = 'white'; // Set the chart background to white
+            ctx.fillRect(0, 0, chart.width, chart.height);
+            ctx.restore();
+        }
+    }]
+});
+
+
+
+
+
+const AQI = parseInt("{{ AQI }}");
+
+    // Show the popup after the page is fully loaded
+    window.onload = function() {
+        // Check if AQI is severe or greater than 300
+        if (AQI >= 300) {
+            const alertSound = document.getElementById('alert-sound');
+            alertSound.play();
+            alert("Warning: The Air Quality Index (AQI) is Severe! Limit outdoor activities and use protection.");
+        }
+    };
+    </script>
+</body>
+</html>
