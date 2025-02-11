@@ -19,5 +19,14 @@
 ### The web app can also be run in Google Colab by running the app.ipynb notebook in Colab. 
 ### Do not need to install the libraries if running in colab.
 
-![screenshot](https://github.com/ociuzacademy/AIR-POLLUTION/blob/main/screenshots/Screenshot from 2025-02-10 15-54-25.png?raw=true)
+
+![Screenshot from 2025-02-10 15-54-25](https://github.com/user-attachments/assets/6f2638b9-3fa9-4810-a90c-9868258cac57)
+
+![Screenshot from 2025-02-10 15-54-30](https://github.com/user-attachments/assets/0173e34f-4553-4662-a6b7-fa4b405289ef)
+
+![Screenshot from 2025-02-10 15-54-41](https://github.com/user-attachments/assets/e7917df2-090d-4bdb-b0ea-83a0060c95b0)
+
+![Screenshot from 2025-02-10 15-54-52](https://github.com/user-attachments/assets/9a62ab3a-8a7f-4e1d-b8fc-789043672bc0)
+
+![Screenshot from 2025-02-10 15-54-55](https://github.com/user-attachments/assets/7eeb0a86-9d88-4be9-83f4-3e9e4ea1da84)
 
