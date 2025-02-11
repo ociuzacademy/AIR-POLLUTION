@@ -19,8 +19,8 @@
 ### The web app can also be run in Google Colab by running the app.ipynb notebook in Colab. 
 ### Do not need to install the libraries if running in colab.
 
-![screenshot](https://github.com/ociuzacademy/AIR-POLLUTION/blob/main/screenshots/Screenshot%20from%202025-02-10%2015-54-25.png?raw=true)
-![screenshot](https://github.com/ociuzacademy/AIR-POLLUTION/blob/main/screenshots/Screenshot%20from%2025-02-10%15-54-30.png?raw=true)
-![screenshot](https://github.com/ociuzacademy/AIR-POLLUTION/blob/main/screenshots/Screenshot%20from%2025-02-10%15-54-41.png?raw=true)
-![screenshot](https://github.com/ociuzacademy/AIR-POLLUTION/blob/main/screenshots/Screenshot%20from%2025-02-10%15-54-52.png?raw=true)
-![screenshot](https://github.com/ociuzacademy/AIR-POLLUTION/blob/main/screenshots/Screenshot%20from%2025-02-10%15-54-55.png?raw=true)
+![screenshot](https://github.com/ociuzacademy/AIR-POLLUTION/blob/main/screenshots/Screenshot%20from%202025-02-10%15-54-25.png?raw=true)
+![screenshot](https://github.com/ociuzacademy/AIR-POLLUTION/blob/main/screenshots/Screenshot%20from%202025-02-10%15-54-30.png?raw=true)
+![screenshot](https://github.com/ociuzacademy/AIR-POLLUTION/blob/main/screenshots/Screenshot%20from%202025-02-10%15-54-41.png?raw=true)
+![screenshot](https://github.com/ociuzacademy/AIR-POLLUTION/blob/main/screenshots/Screenshot%20from%202025-02-10%15-54-52.png?raw=true)
+![screenshot](https://github.com/ociuzacademy/AIR-POLLUTION/blob/main/screenshots/Screenshot%20from%202025-02-10%15-54-55.png?raw=true)
