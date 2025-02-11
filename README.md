@@ -12,12 +12,12 @@
 
 
 ## How to run the web app?
-### The project has been done in Python 3.8.10
-### Python libraries required can be found in the requirements.txt file.
-### Install all the libraries needed.
-### Then run python app.py to see the webapp in action.
-### The web app can also be run in Google Colab by running the app.ipynb notebook in Colab. 
-### Do not need to install the libraries if running in colab.
+* The project has been done in Python 3.8.10
+* Python libraries required can be found in the requirements.txt file.
+* Install all the libraries needed.
+* Then run python app.py to see the webapp in action.
+* The web app can also be run in Google Colab by running the app.ipynb notebook in Colab.
+* Do not need to install the libraries if running in colab.
 
 
 ![Screenshot from 2025-02-10 15-54-25](https://github.com/user-attachments/assets/6f2638b9-3fa9-4810-a90c-9868258cac57)
